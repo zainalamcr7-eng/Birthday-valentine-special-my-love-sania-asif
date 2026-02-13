@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sania ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    padding: 50px 20px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.yes-btn {
+    background: white;
+    color: #ff4b7d;
+    font-weight: bold;
+}
+
+.no-btn {
+    background: #ff4b7d;
+    color: white;
+    position: absolute;
+}
+
+.love-letter {
+    display: none;
+    margin-top: 20px;
+    font-size: 19px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Birthday & Happy Valentine’s Day Sania ❤️</h1>
+    <h2>14th February – My Queen 👑</h2>
+
+    <button onclick="showLetter()">Open My Heart 💌</button>
+
+    <div class="love-letter" id="letter">
+        <p>
+        My Dearest Sania ❤️<br><br>
+        The world celebrates love today…  
+        But I celebrate YOU.  
+
+        You are my peace, my happiness, my forever.  
+        I promise to love you louder and choose you every day.  
+
+        Happy Birthday my queen 🎂  
+        Happy Valentine’s Day my heart 🌹  
+
+        Forever Yours,  
+        Zayn ❤️
+        </p>
+
+        <h3>Will You Be My Forever Valentine? 💍</h3>
+
+        <button class="yes-btn" id="yesBtn" onclick="yesAnswer()">YESSS ❤️</button>
+        <button class="no-btn" id="noBtn">No 😜</button>
+
+        <div id="response" style="margin-top:20px;font-size:24px;"></div>
+    </div>
+</div>
+
+<script>
+let yesSize = 18;
+let noSize = 18;
+
+function showLetter() {
+    document.getElementById("letter").style.display = "block";
+}
+
+function yesAnswer() {
+    document.getElementById("response").innerHTML =
+    "I KNEW ITTT 😍❤️ You are mine forever Saniaaaa 💕";
+}
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+
+    // Move NO randomly
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    // Shrink NO
+    noSize -= 2;
+    if (noSize > 8) {
+        noBtn.style.fontSize = noSize + "px";
+    }
+
+    // Grow YES
+    yesSize += 4;
+    yesBtn.style.fontSize = yesSize + "px";
+});
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
